@@ -28,19 +28,19 @@ export default class DOM extends Node implements PrintableElement {
   }
 
   findElementById(id: string) {
-    let found = this.findElementInTreeById(this, id);
+    let found = this.findElementInTree(this, "id", id);
 
     return found;
   }
 
-  findElementInTreeById(parent: Node, id: string) {
+  findElementInTree(parent: Node, attr: string, value: string) {
     let found;
     if (parent && parent.hasChildren()) {
       const children = parent.getChildren();
       for (const element of children) {
         if (element instanceof DOMElement) {
           const domEl = <DOMElement> element;
-          found = (domEl.getAttribute("id") === id) ? element : this.findElementInTreeById(domEl, id);
+          found = (domEl.getAttribute(attr) === value) ? element : this.findElementInTree(domEl, attr, value);
           if (found) {
             break;
           }
