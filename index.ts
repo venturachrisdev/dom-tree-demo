@@ -81,8 +81,10 @@ class Main {
 
   static main(): void {
     this.createDOM();
+    console.log("----------------- DOM as HTML -----------------");
     console.log(Main.dom.toString());
-    console.log(Main.dom.findElementById("FirstCol"));
+    console.log("----------------- Find an element by ID -----------------");
+    console.log(Main.dom.findElementById("EmailInput"));
   };
 
 }
